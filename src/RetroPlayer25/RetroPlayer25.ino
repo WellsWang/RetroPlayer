@@ -4,13 +4,16 @@ Project RetroPlaye25
 ===================================================================
 
 Try to build a retro MOD player with OLED screen.
+尝试用ESP32构建支持OLED显示的复古MOD音乐播放器
 
 Wells Wang
 geek-logic.com, 2025
 
 Release under GPLv3 License.
+遵循GPLv3协议开源
 
 Based on earlephilhower's ESP8266Audio library: https://github.com/earlephilhower/ESP8266Audio
+基于earlephilhower的ESP8266Audio库：https://github.com/earlephilhower/ESP8266Audio
 
 ====================================================================
 
@@ -186,15 +189,15 @@ void drawButton(int x, int y, int size, byte id, bool active){
   int color;
   if (active) {
     color = SSD1306_BLACK;
-    display.fillRoundRect(x, y, 8 * (size + 2), 11, 3, SSD1306_WHITE);
+    display.fillRoundRect(x, y, 8 * (size + 2), 9, 3, SSD1306_WHITE);
 
   } else {
     color = SSD1306_WHITE;
-    display.fillRoundRect(x, y, 8 * (size + 2), 11, 3, SSD1306_BLACK);
-    display.drawRoundRect(x, y, 8 * (size + 2), 11, 3, SSD1306_WHITE);
+    display.fillRoundRect(x, y, 8 * (size + 2), 9, 3, SSD1306_BLACK);
+    display.drawRoundRect(x, y, 8 * (size + 2), 9, 3, SSD1306_WHITE);
   }
  for (int i=0; i<size; i++)
-   drawIcon(x + 8 * (i + 1), y + 2, id + i, color);
+   drawIcon(x + 8 * (i + 1), y + 1, id + i, color);
 }
 
 void drawUI()
@@ -205,13 +208,28 @@ void drawUI()
   display.setTextColor(SSD1306_BLACK);
   display.setCursor(0, 0);
   display.println(F(":: RETROPLAYER 25 ::"));
-  display.setCursor((display.width()-54)/2-1 , 9);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor((display.width()-54)/2-1 , 27);
   display.println(F("mod - 4ch"));
   drawProgressBar(0, 60, 128, 0.0, 0);
   for (int i=0; i<5; i++) {
-    drawButton((i%3)*42, 30 + i / 3 * 12 , 1, i, 1);
+    drawButton((i%3)*42, 40 + i / 3 * 10 , 1, i, 0);
   }
   display.display();
+}
+
+void printDescription(uint8_t x, uint8_t y)
+{
+  uint8_t t = desc[20];
+  desc[20] = 0;
+  display.setCursor(x, y);
+  display.print(desc);
+  desc[20] = t;
+  display.setCursor(x, y + 8);
+  t = desc[40];
+  desc[40] = 0;
+  display.print(desc + 20);
+  desc[40] = t;
 }
 
 void updateSongInfo(String name, int ch, int pt)
@@ -221,11 +239,14 @@ void updateSongInfo(String name, int ch, int pt)
   if (name.length() > 21) name = name.substring(0, 18) + "...";
   display.fillRect(0, 0, display.width()-1, 8, SSD1306_WHITE);
   display.setTextColor(SSD1306_BLACK);
-  display.fillRect(0, 8, display.width()-1, 10, SSD1306_BLACK);
+  display.fillRect(0, 8, display.width()-1, 28, SSD1306_BLACK);
   display.setCursor((display.width()- 6 * name.length()) / 2 - 1, 0);
   display.println(name); 
+  display.setTextColor(SSD1306_WHITE);
+  printDescription(0, 9);
+
   String info = String(pt) + "pt | " + ch + "ch";
-  display.setCursor((display.width() - 6 * info.length())/2-1 , 9);
+  display.setCursor((display.width() - 6 * info.length())/2-1 , 27);
   display.print(info);
   display.display();
 }
