@@ -418,7 +418,7 @@ void setup()
 
   if (!SD.begin(5, SPI, 8000000)) {
     Serial.println("SD initialization failed!");
-    display.setCursor(0, 18);
+    display.setCursor(0, 12);
     display.println(F("SD INIT FAILED!"));
     display.display();
     while (1);
