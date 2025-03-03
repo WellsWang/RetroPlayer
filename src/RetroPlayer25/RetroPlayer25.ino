@@ -512,7 +512,7 @@ void updateButton(int step)
 // Volume Control / 音量控制
 void changeVolume(float step)
 {
-  if (gain > 0 && gain < maxgain) {
+  if (gain >= 0 && gain <= maxgain) {
     gain += step;             // 音量调整
     if (gain < 0) gain = 0;
     if (gain > maxgain) gain = maxgain;
@@ -528,7 +528,7 @@ void setup()
 {
   WiFi.mode(WIFI_OFF); //WiFi.forceSleepBegin();
   Serial.begin(115200);
-  delay(1000);
+  delay(100);
   
   // Rotary encoder / 旋转编码器
   pinMode(SW_A, INPUT);
@@ -611,7 +611,7 @@ void loop()
       if (gain > maxgain) gain = maxgain;
     }
     out->SetGain(gain);
-    digitalWrite(MUTE, earphone); // 扬声器静音也是地电平有效，同步耳机侦测信号，插入耳机时扬声器静音，拔出耳机时使用扬声器播放
+    digitalWrite(MUTE, earphone); // 扬声器静音也是低电平有效，同步耳机侦测信号，插入耳机时扬声器静音，拔出耳机时使用扬声器播放
   }
 
   // 串口调试控制
@@ -645,7 +645,7 @@ void loop()
       if (digitalRead(SW_B) != a) {             // 向左旋转
         if(submenu == 0){                       // 在根级控件控制中
           updateButton(-1);                     // 回到前一个按钮
-        } else if (submenu == 1) {              // 如果在一级子控键控制中
+        } else if (submenu == 1) {              // 如果在一级子控件控制中
           switch(cur_item) {
             case 4:                             // 当前激活控件编号4 - 音量控制
                     changeVolume(-step);        // 降低音量
@@ -655,8 +655,8 @@ void loop()
         //Serial.println(cur_item);
       } else {                                  // 向右旋转
         if(submenu == 0){                       // 在根级控件控制中
-          updateButton(1);                      //  下一个按钮
-        } else if (submenu == 1) {              // 如果在一级子控键控制中
+          updateButton(1);                      // 下一个按钮
+        } else if (submenu == 1) {              // 如果在一级子控件控制中
           switch(cur_item) {
             case 4:                             // 当前激活控件编号4 - 音量控制
                     changeVolume(step);         // 提高音量
