@@ -1,5 +1,8 @@
 # RetroPlayer
 
+![image](https://github.com/user-attachments/assets/13f8eee9-93b4-4dea-92b4-2f1a606eab65)
+
+
 RetroPlayer 项目旨在创造一个可以播放AMIGA计算机时代流行的MOD音乐格式的实体复古音乐播放器。该播放器基于ESP32实现，支持显示歌曲信息和播放控制，并通过旋转编码器进行操作。
 
 ## 功能
@@ -56,22 +59,42 @@ RetroPlayer 项目旨在创造一个可以播放AMIGA计算机时代流行的MOD
 
 在电路图中，并未涉及锂电池充放电模块，可以使用小型的充放电一体电路模块，将5V电源输出接到H1，SW1接到开关。
 
-对于OLED屏幕，本项目中使用的是SSD1306驱动的1.3寸SPI接口的OLED屏幕。如果需要更换其他的OLED屏幕，例如使用SH1106驱动的屏幕，需要修改源代码，建议使用u8glib库并修改对应的驱动代码。另外因为性能的原因，不建议修改为IIC接口。如果需要修改OLED屏幕的尺寸，需要同步修改外壳设计中面板的开孔大小。
+<img src="https://github.com/user-attachments/assets/ea33d34e-b6a0-4b95-9776-0bf2c2519778" width="300px">
+
+
+对于OLED屏幕，本项目中使用的是SSD1306驱动的1.3寸128x64 SPI接口的OLED屏幕。如果需要更换其他的OLED屏幕，例如使用SH1106驱动的屏幕，需要修改源代码，建议使用u8glib库并修改对应的驱动代码。另外因为性能的原因，不建议修改为IIC接口。如果需要修改OLED屏幕的尺寸，需要同步修改外壳设计中面板的开孔大小。
 
 在本项目中扬声器使用了4040尺寸的，4欧3W腔体扬声器。注意接线时左右扬声器线序要一致。
 
+<img src="https://github.com/user-attachments/assets/a03824c5-6c7d-4766-a69d-d90506599d5c" width="300px">
+
+
 在电路图第三页（音频部分）中，R26和R27为两个0欧电阻，用于跳线选择。这两个电阻只需要焊接一个，建议选择只焊接R27。这种场景下，如有外接耳机、音箱插入3.5mmm音频插孔，播放器自身的扬声器将静音，只通过3.5mm音频接口输出。R26是用于测试的，如果只焊接R26，插入耳机时，扬声器依旧有声音输出，且会随着耳机插入改变声音强度。
+
+![image](https://github.com/user-attachments/assets/8a2630a4-d780-42a9-a22b-ba3da890b81b)
+
 
 #### 外壳设计组装说明
 外壳可以使用木板或亚克力板来构建。可以使用`2D_CAD`目录中的dxf文件进行板材切割。
 
-外壳板材除了绘制在最右侧的音箱网罩板和中央面板外，一般都使用2mm厚度的板材进行切割。音箱网罩板和中央面板使用1mm厚度的板材切割。
+外壳板材除了绘制在最右侧的音箱网罩板和中央面板外，一般都使用2mm厚度的板材进行切割。
+
+![image](https://github.com/user-attachments/assets/40b1082a-83a2-4e30-9b54-226513a91361)
+
+
+音箱网罩板和中央面板使用1mm厚度的板材切割。
+
+![image](https://github.com/user-attachments/assets/663cb054-4e8f-401d-977a-3616fc0fc5fa)
+
 
 切割后的板材可以参考`3D_Model`目录中的三维建模来进行组装。该文件可以使用Sketchup软件打开。
 
 如果想遮盖板材拼接的接口，可以使用`2D_CAD/2D加工图_贴皮.dxf`这个文件对表面贴皮进行切割。贴皮可以使用厚度低于0.5mm的材料，例如胡桃木皮。
 
 音箱网罩板使用尼龙钉与播放器主体进行卡扣连接，推荐使用3.3*13黑色尼龙钉。音箱网罩板上的蒙布需要使用专用胶水粘贴。
+
+<img src="https://github.com/user-attachments/assets/fc91b978-3c14-404b-8a8c-ebcc7308ee66" width="300px">
+
 
 音箱铭牌为可选安装件。
 
@@ -93,15 +116,17 @@ RetroPlayer 项目旨在创造一个可以播放AMIGA计算机时代流行的MOD
 本项目及开发人员不对本项目中包含的所有信息、代码的质量、使用效果、带来的影响作出任何承诺，您需要自行进行判断并承担相应的责任。
 
 ## Acknowledgments
-Inspiration from the classic Amiga computers and their unique sound capabilities.
-ESP8266Audio library for MOD file handling. (https://github.com/earlephilhower/ESP8266Audio)
-Adafriut SSD1306 library for OLED display handling. (https://github.com/adafruit/Adafruit_SSD1306)
+- Inspiration from the classic Amiga computers and their unique sound capabilities.
+- ESP8266Audio library for MOD file handling. (https://github.com/earlephilhower/ESP8266Audio)
+- Adafriut SSD1306 library for OLED display handling. (https://github.com/adafruit/Adafruit_SSD1306)
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
 
 # RetroPlayer
+
+![image](https://github.com/user-attachments/assets/13f8eee9-93b4-4dea-92b4-2f1a606eab65)
 
 The RetroPlayer project aims to create a physical retro music player capable of playing the popular MOD music format from the AMIGA computer era. This player is based on the ESP32, supports song information display and playback control, and is operated using a rotary encoder.
 
@@ -162,22 +187,37 @@ The `Schematics` directory contains circuit schematic designs. If you have new i
 
 The circuit diagram does not include a lithium battery charging/discharging module. A small integrated charging circuit module can be used, connecting the 5V power output to H1 and SW1 to the switch.
 
-For the OLED screen, this project uses a 1.3-inch SPI interface OLED display driven by SSD1306. If replacing it with another display, such as one driven by SH1106, modifications to the source code are required. The u8glib library is recommended for these changes. Due to performance reasons, using an I2C interface is not recommended. If changing the OLED screen size, adjust the enclosure design's panel cutout accordingly.
+<img src="https://github.com/user-attachments/assets/ea33d34e-b6a0-4b95-9776-0bf2c2519778" width="300px">
+
+
+For the OLED screen, this project uses a 1.3-inch 128x64 SPI interface OLED display driven by SSD1306. If replacing it with another display, such as one driven by SH1106, modifications to the source code are required. The u8glib library is recommended for these changes. Due to performance reasons, using an I2C interface is not recommended. If changing the OLED screen size, adjust the enclosure design's panel cutout accordingly.
 
 The speaker used in this project is a 4040-sized, 4-ohm 3W cavity speaker. Ensure that the wiring sequence for the left and right speakers is consistent.
 
+<img src="https://github.com/user-attachments/assets/a03824c5-6c7d-4766-a69d-d90506599d5c" width="300px">
+
 On the third page of the circuit diagram (audio section), R26 and R27 are two 0-ohm resistors used for jumper selection. Only one of these resistors should be soldered. It is recommended to solder only R27. In this configuration, when external headphones or speakers are connected to the 3.5mm audio jack, the player's built-in speaker will be muted, and audio output will be redirected through the 3.5mm jack. R26 is used for testing purposes; if only R26 is soldered, the speaker will continue to output sound even when headphones are inserted, and the volume will change accordingly.
+
+![image](https://github.com/user-attachments/assets/8a2630a4-d780-42a9-a22b-ba3da890b81b)
 
 #### Enclosure Design and Assembly Instructions
 The enclosure can be made from wood or acrylic sheets. The DXF files in the `2D_CAD` directory can be used for material cutting.
 
-Apart from the speaker grille panel and the central panel, most parts should be cut from 2mm thick material. The speaker grille panel and the central panel should be cut from 1mm thick material.
+Apart from the speaker grille panel and the central panel, most parts should be cut from 2mm thick material. 
+
+![image](https://github.com/user-attachments/assets/40b1082a-83a2-4e30-9b54-226513a91361)
+
+The speaker grille panel and the central panel should be cut from 1mm thick material.
+
+![image](https://github.com/user-attachments/assets/663cb054-4e8f-401d-977a-3616fc0fc5fa)
 
 After cutting, refer to the `3D_Model` directory for assembly guidance. These files can be opened using SketchUp.
 
 To cover the joints of the assembled sheets, use the `2D_CAD/2D加工图_贴皮.dxf` file for veneer cutting. The veneer material should be less than 0.5mm thick, such as walnut veneer.
 
 The speaker grille panel is attached to the player body using nylon pins. It is recommended to use 3.3*13mm black nylon pins. The fabric on the speaker grille should be glued with a specialized adhesive.
+
+<img src="https://github.com/user-attachments/assets/fc91b978-3c14-404b-8a8c-ebcc7308ee66" width="300px">
 
 The speaker nameplate is an optional component.
 
