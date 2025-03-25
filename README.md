@@ -94,7 +94,111 @@ RetroPlayer 项目旨在创造一个可以播放AMIGA计算机时代流行的MOD
 
 ## Acknowledgments
 Inspiration from the classic Amiga computers and their unique sound capabilities.
-
 ESP8266Audio library for MOD file handling. (https://github.com/earlephilhower/ESP8266Audio)
-
 Adafriut SSD1306 library for OLED display handling. (https://github.com/adafruit/Adafruit_SSD1306)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+# RetroPlayer
+
+The RetroPlayer project aims to create a physical retro music player capable of playing the popular MOD music format from the AMIGA computer era. This player is based on the ESP32, supports song information display and playback control, and is operated using a rotary encoder.
+
+## Features
+
+- **MOD Music**: RetroPlayer can play a vast collection of AMIGA MOD music stored on a TF card. MOD music was highly popular in the 1990s and is an essential part of the Demoscene culture.
+- **Track Information Display**: The OLED screen displays relevant information about the currently playing track.
+- **Single Control Interface**: Playback can be conveniently controlled using a single knob-driven rotary encoder.
+- **Wooden Enclosure**: While other materials can be used, solid wood is recommended for a warm and sturdy tactile feel.
+
+## Getting Started
+
+### Prerequisites
+
+- Arduino IDE environment supporting ESP32 development boards
+- Installed libraries: ESP8266Audio, Adafruit_SSD1306, and their dependencies
+- All electronic components listed in the BOM
+- PCBs manufactured according to the provided Gerber files
+- Some sheet materials: wood or acrylic sheets (2mm and 1mm thickness, with 0.5mm veneer for surface finishing)
+- A laser engraver or another cutting tool (or outsourcing to a professional service)
+- A soldering iron and related materials
+- Dexterous hands
+- Patience and courage to face challenges
+
+### Code Download and Instructions
+
+#### Downloading the Code
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/WellsWang/RetroPlayer.git
+   cd RetroPlayer
+   ```
+2. Alternatively, download the ZIP file and extract it using decompression software.
+
+#### Directory Structure
+- **pcb** (Circuit Design Related)
+  - **BOM** (Bill of Materials)
+  - **Gerber** (PCB Manufacturing Files)
+  - **Schematics** (Circuit Schematics)
+- **shell** (Enclosure Design Related)
+  - **3D_Model** (3D modeling files for visualization)
+  - **2D_CAD** (CAD files for material cutting)
+- **src** (Source Code Related)
+  - **ESP8266Audio_mod_src** (Modified files for the ESP8266Audio library)
+  - **RetroPlayer25** (Project source code)
+
+#### Code Installation Notes
+The ESP8266Audio library only provides basic file parsing and audio signal generation. Some required functionalities were not implemented, so this project modifies and extends parts of the ESP8266Audio library related to MOD files. Before compiling, copy the files from `src/ESP8266Audio_mod_src` into the ESP8266Audio library directory used by the Arduino IDE, replacing the original files. It is recommended to back up the original files before replacing them.
+
+In Windows, the Arduino IDE libraries are typically located at:
+`C:\Users\YourUsername\Documents\Arduino\libraries`
+
+In Linux, they are usually found at:
+`/home/YourUsername/Arduino/libraries`
+
+#### Circuit Design Installation Notes
+The `Schematics` directory contains circuit schematic designs. If you have new ideas or improvements, feel free to reference them.
+
+The circuit diagram does not include a lithium battery charging/discharging module. A small integrated charging circuit module can be used, connecting the 5V power output to H1 and SW1 to the switch.
+
+For the OLED screen, this project uses a 1.3-inch SPI interface OLED display driven by SSD1306. If replacing it with another display, such as one driven by SH1106, modifications to the source code are required. The u8glib library is recommended for these changes. Due to performance reasons, using an I2C interface is not recommended. If changing the OLED screen size, adjust the enclosure design's panel cutout accordingly.
+
+The speaker used in this project is a 4040-sized, 4-ohm 3W cavity speaker. Ensure that the wiring sequence for the left and right speakers is consistent.
+
+On the third page of the circuit diagram (audio section), R26 and R27 are two 0-ohm resistors used for jumper selection. Only one of these resistors should be soldered. It is recommended to solder only R27. In this configuration, when external headphones or speakers are connected to the 3.5mm audio jack, the player's built-in speaker will be muted, and audio output will be redirected through the 3.5mm jack. R26 is used for testing purposes; if only R26 is soldered, the speaker will continue to output sound even when headphones are inserted, and the volume will change accordingly.
+
+#### Enclosure Design and Assembly Instructions
+The enclosure can be made from wood or acrylic sheets. The DXF files in the `2D_CAD` directory can be used for material cutting.
+
+Apart from the speaker grille panel and the central panel, most parts should be cut from 2mm thick material. The speaker grille panel and the central panel should be cut from 1mm thick material.
+
+After cutting, refer to the `3D_Model` directory for assembly guidance. These files can be opened using SketchUp.
+
+To cover the joints of the assembled sheets, use the `2D_CAD/2D加工图_贴皮.dxf` file for veneer cutting. The veneer material should be less than 0.5mm thick, such as walnut veneer.
+
+The speaker grille panel is attached to the player body using nylon pins. It is recommended to use 3.3*13mm black nylon pins. The fabric on the speaker grille should be glued with a specialized adhesive.
+
+The speaker nameplate is an optional component.
+
+## Future Plans and Code Contributions
+This is a hobby project with many ideas for future development, such as:
+- Improved playback modes (shuffle, repeat control)
+- More detailed song information display (play duration, current note data)
+- Support for additional music formats (ESP8266Audio supports various formats)
+- Internet streaming support (direct playback from modarchive.org)
+- …and many more ideas…
+
+However, due to limited personal time, updates to this project may happen sporadically.
+
+Thus, contributions are highly encouraged! Feel free to fork this project, optimize the code, make improvements, or implement your own ideas. Thank you in advance for your contributions and support!
+
+## License
+This project is released under the GNU General Public License v3.0. For details, refer to the LICENSE file.
+
+The project and its developers make no guarantees regarding the quality, usability, or impact of the provided information and code. Users must evaluate and assume responsibility for their usage.
+
+## Acknowledgments
+- Inspired by the classic Amiga computers and their unique sound capabilities.
+- Thanks to the ESP8266Audio library for MOD file handling (https://github.com/earlephilhower/ESP8266Audio).
+- Thanks to the Adafruit SSD1306 library for OLED display handling (https://github.com/adafruit/Adafruit_SSD1306).
