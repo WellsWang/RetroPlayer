@@ -42,7 +42,7 @@ RetroPlayer 项目旨在创造一个可以播放AMIGA计算机时代流行的MOD
 	- BOM `物料表`
 	- Gerber `PCB制作文件`
 	- Schematics `电路原理图`
-- shell `外壳设计相关`
+- enclosure `外壳设计相关`
 	- 3D_Model `三维建模文件（效果验证）`
 	- 2D_CAD `CAD文件，用于板材切割`
 - src `源代码相关`
@@ -166,7 +166,7 @@ The RetroPlayer project aims to create a physical retro music player capable of 
   - **BOM** (Bill of Materials)
   - **Gerber** (PCB Manufacturing Files)
   - **Schematics** (Circuit Schematics)
-- **shell** (Enclosure Design Related)
+- **enclosure** (Enclosure Design Related)
   - **3D_Model** (3D modeling files for visualization)
   - **2D_CAD** (CAD files for material cutting)
 - **src** (Source Code Related)
