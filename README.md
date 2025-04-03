@@ -117,11 +117,10 @@ RetroPlayer 项目旨在创造一个可以播放AMIGA计算机时代流行的MOD
 本项目基于GNU General Public License v3.0许可证发布。具体信息请参考LICENSE文件。
 本项目及开发人员不对本项目中包含的所有信息、代码的质量、使用效果、带来的影响作出任何承诺，您需要自行进行判断并承担相应的责任。
 
-## Acknowledgments
-- Inspiration from the classic Amiga computers and their unique sound capabilities.
-- ESP8266Audio library for MOD file handling. (https://github.com/earlephilhower/ESP8266Audio)
-- Adafriut SSD1306 library for OLED display handling. (https://github.com/adafruit/Adafruit_SSD1306)
-
+## 致谢
+- 灵感来自经典的 Amiga 电脑及其独特的声音处理功能。
+- Earle Philhower 的 ESP8266Audio 库用于处理 MOD 文件。 (https://github.com/earlephilhower/ESP8266Audio)
+- Adafriut 的 Adafriut SSD1306 库用于驱动 OLED 显示屏。(https://github.com/adafruit/Adafruit_SSD1306)
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
